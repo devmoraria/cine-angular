@@ -1,0 +1,13 @@
+<header class="topo">
+  <h1>{{ titulo }}</h1>
+  <nav>
+    <a routerLink="/" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Início</a>
+    <a routerLink="/sobre" routerLinkActive="ativo">Sobre</a>
+  </nav>
+</header>
+
+<main>
+  <router-outlet />
+</main>
+
+<footer>Cine Angular · Projeto de portfólio feito com Angular</footer>
