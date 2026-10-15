@@ -1,0 +1,18 @@
+<article class="card" [class.na-lista]="naLista()">
+  <a class="poster" [routerLink]="['/filme', filme().id]" [style.background]="filme().cor" [attr.aria-label]="'Ver detalhes de ' + filme().titulo">
+    @if (imagemOk() && filme().poster) {
+      <img [src]="filme().poster" referrerpolicy="no-referrer" [alt]="'Pôster de ' + filme().titulo" (error)="imagemOk.set(false)">
+    } @else {
+      <span class="titulo-poster">{{ filme().titulo }}</span>
+    }
+    <span class="selo" [class.breve]="filme().status === 'breve'">{{ filme().status === 'cartaz' ? 'Em cartaz' : 'Em breve' }}</span>
+  </a>
+  <div class="info">
+    <h3>{{ filme().titulo }}</h3>
+    <p>{{ filme().genero }}</p>
+    <p class="estreia">Estreia: {{ filme().estreia }}</p>
+    <button type="button" (click)="alternar.emit(filme().id)" [attr.aria-pressed]="naLista()">
+      {{ naLista() ? '♥ Na minha lista' : '♡ Salvar na lista' }}
+    </button>
+  </div>
+</article>

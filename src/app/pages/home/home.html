@@ -1,0 +1,36 @@
+<section class="hero" [style.--bg]="'url(' + atual().poster + ')'">
+  <div class="hero-texto">
+    <span class="tag">Destaque</span>
+    <h2>{{ atual().titulo }}</h2>
+    <p>{{ atual().sinopse }}</p>
+    <a class="btn" [routerLink]="['/filme', atual().id]">Ver detalhes</a>
+  </div>
+  <img class="hero-poster" [src]="atual().poster" [alt]="'Pôster de ' + atual().titulo">
+  <div class="pontos">
+    @for (d of destaques; track d.id; let i = $index) {
+      <button type="button" [class.ativo]="i === slide()" (click)="slide.set(i)" [attr.aria-label]="'Destaque ' + (i + 1)"></button>
+    }
+  </div>
+</section>
+
+<div class="barra">
+  <div class="abas" role="tablist">
+    @for (a of abas; track a.id) {
+      <button type="button" role="tab" [class.ativo]="aba() === a.id" [attr.aria-selected]="aba() === a.id" (click)="aba.set(a.id)">
+        {{ a.nome }}@if (a.id === 'lista') { ({{ svc.lista().length }}) }
+      </button>
+    }
+  </div>
+  <div class="busca">
+    <label for="busca">Buscar filme</label>
+    <input id="busca" type="text" [(ngModel)]="busca" placeholder="Digite o nome do filme">
+  </div>
+</div>
+
+<section class="grade">
+  @for (f of filtrados(); track f.id) {
+    <app-card-filme [filme]="f" [naLista]="svc.naLista(f.id)" (alternar)="svc.alternar($event)" />
+  } @empty {
+    <p class="vazio">{{ aba() === 'lista' ? 'Sua lista está vazia. Salve filmes para vê-los aqui.' : 'Nenhum filme encontrado.' }}</p>
+  }
+</section>

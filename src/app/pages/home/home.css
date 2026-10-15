@@ -1,0 +1,23 @@
+.hero { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 340px; padding: 32px; margin-bottom: 24px; overflow: hidden; color: #fff; border-radius: 14px; background: #1b2a49; isolation: isolate; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background: var(--bg) center / cover; filter: blur(22px) brightness(.45); transform: scale(1.2); }
+.hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, #1b2a49 10%, transparent); }
+.hero-texto { max-width: 480px; }
+.hero h2 { margin: 8px 0; font-size: 2rem; }
+.hero p { margin: 0 0 16px; line-height: 1.5; }
+.tag { padding: 4px 10px; font-size: .8rem; font-weight: bold; color: #1b2a49; background: #e8a33d; border-radius: 999px; }
+.btn { display: inline-block; padding: 10px 18px; font-weight: bold; color: #1b2a49; text-decoration: none; background: #e8a33d; border-radius: 6px; }
+.btn:hover { background: #f0b659; }
+.hero-poster { height: 270px; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,.5); }
+.pontos { position: absolute; bottom: 12px; left: 32px; display: flex; gap: 8px; }
+.pontos button { width: 12px; height: 12px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.4); cursor: pointer; }
+.pontos button.ativo { background: #e8a33d; }
+.barra { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; }
+.abas { display: flex; gap: 6px; }
+.abas button { padding: 10px 16px; font-weight: bold; color: #1b2a49; background: #fff; border: 2px solid #1b2a49; border-radius: 6px; cursor: pointer; }
+.abas button.ativo { color: #fff; background: #1b2a49; }
+.busca { flex: 1 1 240px; max-width: 360px; }
+label { display: block; margin-bottom: 4px; font-weight: bold; }
+input { box-sizing: border-box; width: 100%; padding: 10px 12px; font-size: 1rem; color: #1b2a49; background: #fff; border: 2px solid #1b2a49; border-radius: 6px; }
+.grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
+.vazio { color: #b3261e; font-weight: bold; }
+@media (max-width: 640px) { .hero-poster { display: none; } .hero::after { background: #1b2a49cc; } }
