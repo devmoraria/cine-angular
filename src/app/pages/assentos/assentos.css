@@ -1,0 +1,22 @@
+.voltar { display: inline-block; margin-bottom: 12px; font-weight: bold; color: #1b2a49; text-decoration: none; }
+h2 { margin: 0 0 4px; }
+.meta { margin: 0 0 20px; color: #444; }
+.tela { width: 70%; margin: 0 auto 20px; padding: 6px; font-size: .8rem; letter-spacing: 6px; text-align: center; color: #fff; background: #1b2a49; border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
+.mapa { display: flex; flex-direction: column; align-items: center; gap: 6px; overflow-x: auto; }
+.fileira { display: flex; gap: 6px; align-items: center; }
+.letra { width: 20px; font-weight: bold; text-align: center; }
+.assento { width: 34px; height: 34px; padding: 0; font-size: .75rem; font-weight: bold; border: 2px solid #1b2a49; border-radius: 6px 6px 3px 3px; cursor: pointer; }
+.fileira .assento:nth-child(6) { margin-right: 18px; }
+.assento.livre { color: #1b2a49; background: #fff; }
+.assento.livre:hover { background: #fff8ea; }
+.assento.selecionado { color: #1b2a49; background: #e8a33d; border-color: #e8a33d; }
+.assento.ocupado { color: #8a93a8; background: #c9d1e0; border-color: #c9d1e0; cursor: not-allowed; }
+.assento:focus-visible { outline: 3px solid #2e6fd8; outline-offset: 2px; }
+.legenda { display: flex; justify-content: center; gap: 20px; margin: 20px 0; font-size: .9rem; }
+.legenda span { display: flex; align-items: center; gap: 6px; }
+.legenda i { display: inline-block; width: 18px; height: 18px; cursor: default; }
+.resumo, .ingresso { max-width: 420px; margin: 0 auto; padding: 16px; text-align: center; background: #fff; border: 2px solid #c9d1e0; border-radius: 12px; }
+.confirmar { display: inline-block; padding: 10px 20px; font-weight: bold; color: #fff; text-decoration: none; background: #1b2a49; border: 0; border-radius: 6px; cursor: pointer; }
+.confirmar:disabled { background: #8a93a8; cursor: not-allowed; }
+.codigo { font-family: "Courier New", monospace; font-size: 1.6rem; font-weight: bold; letter-spacing: 3px; color: #1b2a49; }
+.vazio { color: #b3261e; font-weight: bold; }

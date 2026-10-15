@@ -1,0 +1,44 @@
+@if (filme(); as f) {
+  <a class="voltar" [routerLink]="['/filme', f.id]">← Voltar às sessões</a>
+  <h2>{{ f.titulo }}</h2>
+  <p class="meta">{{ sessao().cinema }} · {{ dataBr() }} às {{ sessao().hora }} · {{ sessao().formato }}</p>
+
+  @if (!codigo()) {
+    <div class="tela">TELA</div>
+    <div class="mapa" role="group" aria-label="Mapa de assentos">
+      @for (fil of fileiras; track fil) {
+        <div class="fileira">
+          <span class="letra">{{ fil }}</span>
+          @for (c of colunas; track c) {
+            <button type="button" class="assento" [class]="'assento ' + estado(fil, c)"
+              [disabled]="estado(fil, c) === 'ocupado'" (click)="alternar(fil, c)"
+              [attr.aria-pressed]="estado(fil, c) === 'selecionado'"
+              [attr.aria-label]="'Fileira ' + fil + ' assento ' + c + ', ' + estado(fil, c)">{{ c }}</button>
+          }
+        </div>
+      }
+    </div>
+    <div class="legenda">
+      <span><i class="assento livre"></i> Livre</span>
+      <span><i class="assento selecionado"></i> Selecionado</span>
+      <span><i class="assento ocupado"></i> Ocupado</span>
+    </div>
+
+    <div class="resumo">
+      <p>Assentos: <strong>{{ selecionados().length ? selecionados().join(', ') : 'nenhum' }}</strong> (máx. 6)</p>
+      <p>Total: <strong>{{ brl(total()) }}</strong></p>
+      <button type="button" class="confirmar" [disabled]="!selecionados().length" (click)="confirmar()">Confirmar ingressos</button>
+    </div>
+  } @else {
+    <div class="ingresso">
+      <h3>Ingresso confirmado (demonstração)</h3>
+      <p><strong>{{ f.titulo }}</strong></p>
+      <p>{{ sessao().cinema }} · {{ dataBr() }} às {{ sessao().hora }} · {{ sessao().formato }}</p>
+      <p>Assentos: {{ selecionados().join(', ') }} · Total: {{ brl(total()) }}</p>
+      <p class="codigo">{{ codigo() }}</p>
+      <a class="confirmar" routerLink="/">Voltar ao início</a>
+    </div>
+  }
+} @else {
+  <p class="vazio">Filme não encontrado.</p>
+}
