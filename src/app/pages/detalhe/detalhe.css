@@ -1,0 +1,22 @@
+.voltar { display: inline-block; margin-bottom: 16px; font-weight: bold; color: #1b2a49; text-decoration: none; }
+.detalhe { display: flex; flex-wrap: wrap; gap: 28px; }
+.detalhe img { width: 280px; max-width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(27,42,73,.3); }
+.texto { flex: 1 1 320px; }
+h2 { margin: 10px 0 4px; font-size: 2rem; }
+.selo { padding: 4px 10px; font-size: .8rem; font-weight: bold; color: #1b2a49; background: #e8a33d; border-radius: 999px; }
+.selo.breve { color: #fff; background: #2e6fd8; }
+.meta { color: #444; }
+.sinopse { line-height: 1.6; }
+button { padding: 10px 18px; font-weight: bold; color: #fff; background: #1b2a49; border: 0; border-radius: 6px; cursor: pointer; }
+button:hover { background: #2e4373; }
+.aviso { margin-top: 20px; color: #555; font-style: italic; }
+.vazio { color: #b3261e; font-weight: bold; }
+.sessoes { margin-top: 32px; padding-top: 8px; border-top: 2px solid #c9d1e0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.chip { color: #1b2a49; background: #fff; border: 2px solid #1b2a49; }
+.chip:hover { background: #e8eefb; }
+.chip.ativo { color: #fff; background: #1b2a49; }
+.horarios { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.horario { display: flex; flex-direction: column; gap: 2px; min-width: 120px; padding: 10px 16px; color: #1b2a49; text-align: center; text-decoration: none; background: #fff8ea; border: 2px solid #e8a33d; border-radius: 8px; }
+.horario:hover { background: #e8a33d; }
+.horario span { font-size: .8rem; }

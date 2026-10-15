@@ -1,0 +1,43 @@
+<a class="voltar" routerLink="/">← Voltar aos filmes</a>
+@if (filme(); as f) {
+  <article class="detalhe">
+    <img [src]="f.poster" [alt]="'Pôster de ' + f.titulo">
+    <div class="texto">
+      <span class="selo" [class.breve]="f.status === 'breve'">{{ f.status === 'cartaz' ? 'Em cartaz' : 'Em breve' }}</span>
+      <h2>{{ f.titulo }}</h2>
+      <p class="meta">{{ f.genero }} · Estreia: {{ f.estreia }}</p>
+      <p class="sinopse">{{ f.sinopse }}</p>
+      <button type="button" (click)="svc.alternar(f.id)" [attr.aria-pressed]="svc.naLista(f.id)">
+        {{ svc.naLista(f.id) ? '♥ Na minha lista' : '♡ Salvar na lista' }}
+      </button>
+    </div>
+  </article>
+
+  <section class="sessoes">
+    <h3>Sessões</h3>
+    @if (f.status === 'cartaz') {
+      <div class="chips">
+        @for (c of cinemas; track c) {
+          <button type="button" class="chip" [class.ativo]="cinema() === c" (click)="cinema.set(c)">{{ c }}</button>
+        }
+      </div>
+      <div class="chips">
+        @for (d of dias; track d.valor) {
+          <button type="button" class="chip" [class.ativo]="dia() === d.valor" (click)="dia.set(d.valor)">{{ d.rotulo }}</button>
+        }
+      </div>
+      <div class="horarios">
+        @for (s of sessoes; track s.hora) {
+          <a class="horario" [routerLink]="['/filme', f.id, 'assentos']"
+             [queryParams]="{ cinema: cinema(), dia: dia(), hora: s.hora, formato: s.formato }">
+            <strong>{{ s.hora }}</strong><span>{{ s.formato }}</span>
+          </a>
+        }
+      </div>
+    } @else {
+      <p class="aviso">As sessões ficam disponíveis perto da estreia.</p>
+    }
+  </section>
+} @else {
+  <p class="vazio">Filme não encontrado.</p>
+}
