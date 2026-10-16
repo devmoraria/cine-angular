@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install
+      - run: npm install --legacy-peer-deps
       - run: npm run build:pages
       # O GitHub Pages não conhece as rotas do Angular: o 404.html devolve o app para elas
       - run: cp dist/cine-angular/browser/index.html dist/cine-angular/browser/404.html
